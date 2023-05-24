@@ -138,6 +138,6 @@
             </div>
         </div>
         <div id="app"></div>
-        <script type="module" src="{{ asset('js/main-8f624b86.js') }}"></script>
+        <script type="module" src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
