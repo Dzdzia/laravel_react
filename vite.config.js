@@ -13,14 +13,21 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, 'src_react'), // Popraw ścieżkę do folderu src_react
+            '@': path.resolve(__dirname, 'src_react'),
         },
     },
     build: {
         outDir: 'public/js',
         assetsDir: '',
         rollupOptions: {
-            input: path.resolve(__dirname, 'src_react/main.jsx'), // Popraw ścieżkę do pliku main.jsx
+            input: {
+                main: path.resolve(__dirname, 'src_react/main.jsx'),
+            },
+            output: {
+                entryFileNames: 'main.js',
+                chunkFileNames: 'main.js',
+                assetFileNames: 'main.js',
+            },
         },
     },
 });
