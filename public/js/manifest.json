@@ -1,5 +1,12 @@
 {
+  "src_react/main.css": {
+    "file": "main.css",
+    "src": "src_react/main.css"
+  },
   "src_react/main.jsx": {
+    "css": [
+      "main.css"
+    ],
     "file": "main.js",
     "isEntry": true,
     "src": "src_react/main.jsx"
