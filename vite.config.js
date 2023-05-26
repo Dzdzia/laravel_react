@@ -1,36 +1,22 @@
 import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import reactRefresh from '@vitejs/plugin-react-refresh';
-import path from 'path';
-import vitePluginWindicss from 'vite-plugin-windicss';
 
+import path from 'path';
+import laravel from "laravel-vite-plugin";
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
     plugins: [
-        laravel({
-            input: path.resolve(__dirname, 'src_react/main.jsx'),
-            refresh: true,
-        }),
-        reactRefresh(),
-        vitePluginWindicss(),
-    ],
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'src_react'),
-        },
-    },
-    build: {
-        outDir: 'public/js',
-        assetsDir: '',
-        rollupOptions: {
-            input: {
-                main: path.resolve(__dirname, 'src_react/main.jsx'),
-            },
-            output: {
-                entryFileNames: 'main.js',
-                chunkFileNames: 'main.js',
-                assetFileNames: '[name].[ext]',
-            },
-        },
-    },
-});
+        react(),
+         laravel({
+             input:[
+                'resources/css/index.css',
+                'resources/js/app.jsx',
+            ],
+    refresh: true,
+
+    }),
+        ],
+    }
+    );
+
+
