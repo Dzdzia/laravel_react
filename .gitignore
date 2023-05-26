@@ -16,3 +16,11 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/js
+/public/favicon.ico
+
+/public/logo192.png
+/public/logo512.png
+/public/manifest.json
+/public/robots.txt
+
