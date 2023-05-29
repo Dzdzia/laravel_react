@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --port=3000",
         "build": "vite build",
         "start": "vite preview",
         "test": "vite test"
@@ -51,6 +51,8 @@
         ]
     },
     "dependencies": {
+        "@headlessui/react": "^1.7.14",
+        "@heroicons/react": "^2.0.18",
         "@vitejs/plugin-react": "^4.0.0",
         "react-router-dom": "^6.11.2"
     }
