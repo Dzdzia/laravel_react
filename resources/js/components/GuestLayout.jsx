@@ -1,5 +1,4 @@
 import {Link, Navigate, Outlet} from "react-router-dom";
-import Navbar from "./Navbar.jsx";
 import {useStateContext} from "../Context/Context.jsx";
 
 export default function GuestLayout() {
@@ -15,7 +14,7 @@ export default function GuestLayout() {
                     <Link to="/login" className="text-xl text-black-800 hover:text-blue-700 px-6">Login</Link>
                     <Link to="/register" className="text-xl text-black-800 hover:text-blue-700 px-6">Register</Link>
                 </header>
-                <main className="p-8">
+                <main className="p-12">
                     <Outlet />
                 </main>
             </div>
