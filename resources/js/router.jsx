@@ -1,5 +1,5 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
-import Home from "./Views/Home.jsx";
+import User from "./Views/User.jsx";
 import Login from "./Views/Login.jsx";
 import Register from "./Views/Register.jsx";
 import Admin from "./Views/Admin.jsx";
@@ -38,7 +38,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: '/home',
-                    element:<Home />
+                    element:<User />
                 },
                 {
                     path: '/',
