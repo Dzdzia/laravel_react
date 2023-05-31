@@ -11,7 +11,7 @@ class CheckAdmin
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Closure(Request): (Response) $next
      */
     public function handle($request, Closure $next)
     {
@@ -19,7 +19,7 @@ class CheckAdmin
             return $next($request);
         }
 
-        return redirect('home'); // przekieruj użytkowników, którzy nie są adminem
+        return redirect('users'); // przekieruj użytkowników, którzy nie są adminem
     }
 
 }
