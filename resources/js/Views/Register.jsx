@@ -2,9 +2,6 @@ import React, {createRef, useState} from "react";
 import {Link} from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../Context/Context.jsx";
-function Alert({ message }) {
-    return <div className="alert">{message}</div>;
-}
 
 
 export default function Register() {
