@@ -22,7 +22,7 @@ export default function UserLayout() {
             })
     }
     useEffect(() => {
-        axiosClient.get('/user')
+        axiosClient.get('/users')
             .then(({data}) => {
                 setUser(data)
             })
@@ -35,7 +35,7 @@ export default function UserLayout() {
                             <header className="py-5  white shadow-xl flex justify-center space-x-4">
 
                                 <Link to="/admin" className="text-xl text-black-800 hover:text-blue-700 px-6">Admin</Link>
-                                <Link to="/home" className="text-xl text-black-800 hover:text-blue-700 px-6">Home</Link>
+                                <Link to="/users" className="text-xl text-black-800 hover:text-blue-700 px-6">User</Link>
                                       <div className=" text-l justify-end px-8">
                                         <a href="#" onClick={onLogout} className="btn-logout"> Wyloguj się</a>
                                      </div>

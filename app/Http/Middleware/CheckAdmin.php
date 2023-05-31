@@ -19,7 +19,7 @@ class CheckAdmin
             return $next($request);
         }
 
-        return redirect('home'); // przekieruj użytkowników, którzy nie są adminem
+        return redirect('users'); // przekieruj użytkowników, którzy nie są adminem
     }
 
 }

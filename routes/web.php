@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/{any}', function () {
-    return view('widok_glowny');
+    return view('Widok_glowny');
 })->where('any', '.*');

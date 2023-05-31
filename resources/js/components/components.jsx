@@ -1,19 +1,3 @@
-function StaleSet(){
-
-    return (
-        <>
-        asd
-
-        </>
-    )
-}
-export default function Nothing(){
-
-    return (
-        <>
+import React, {useState} from "react";
 
 
-            <StaleSet/>
-        </>
-    )
-};
