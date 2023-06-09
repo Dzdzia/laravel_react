@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 import ProductItem from "./ProductItem";
+import {BsFillPlusCircleFill} from "react-icons/bs";
 
 export default function ProductList() {
     const [products, setProducts] = useState([]);
@@ -32,35 +33,25 @@ export default function ProductList() {
 
     return (
         <div>
+
+
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div className="overflow-x-auto">
+                <div className="ProductList">
+                    <section>
                     {products.length > 0 ? (
-                        <table className="min-w-full divide-y divide-gray-200">
+                        <table className="able-fixed  border-collapse ">
                             <thead>
                             <tr>
-                                <th className="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    ID
-                                </th>
-                                <th className="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Name
-                                </th>
-                                <th className="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Description
-                                </th>
-                                <th className="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Price
-                                </th>
-                                <th className="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Quantity
-                                </th>
-                                <th className="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Action
-                                </th>
+
+                                <th className="px-4 py-2">Produkt</th>
+                                <th className="px-4 py-2">Opis</th>
+                                <th className="px-4 py-2">Cena</th>
+                                <th className="px-4 py-2">Akcje</th>
                             </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
+                            <tbody>
                             {products.map((product) => (
                                 <ProductItem
                                     key={product.id}
@@ -73,13 +64,15 @@ export default function ProductList() {
                     ) : (
                         <p>No products available.</p>
                     )}
+                </section>
                 </div>
+
             )}
             <Link
                 to="/products/new"
-                className="inline-block mt-4 px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-indigo-600"
+                className="inline-block mt-4 px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-indigo-600"
             >
-                Create New Product
+                <BsFillPlusCircleFill size={20} />
             </Link>
         </div>
     );

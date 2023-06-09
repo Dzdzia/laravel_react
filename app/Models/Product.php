@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public $incrementing = true;
     use HasFactory;
     protected $fillable = [
         'name',
@@ -14,4 +15,8 @@ class Product extends Model
         'quantity',
         'description'
     ];
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order');
+    }
 }

@@ -15,10 +15,13 @@
 
 
     <body class="antialiased">
-    <div id="root"></div>
+
+
+    <div id="root">
+
+
     <script src="{{ asset('public/js/app_public.js') }}"></script>
-
-
+    </div>
     </body>
 </html>
 

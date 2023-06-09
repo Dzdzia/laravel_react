@@ -1,16 +1,22 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    /**
+     * Register a new user.
+     *
+     * @param RegisterRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
@@ -25,6 +31,12 @@ class AuthController extends Controller
         return response(compact('user', 'token'));
     }
 
+    /**
+     * Authenticate a user and generate a token.
+     *
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(LoginRequest $request)
     {
         $credentials = $request->validated();
@@ -40,6 +52,12 @@ class AuthController extends Controller
         return response(compact('user', 'token'));
     }
 
+    /**
+     * Logout the authenticated user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
         /** @var User $user */

@@ -18,26 +18,26 @@ export default function EditProductForm() {
 
     useEffect(() => {
         fetchProduct();
-    }, [id]); // Dodano id jako zależność
+    }, [id]);
 
-    const fetchProduct = () => {
+    const fetchProduct = async () => {
         setLoading(true);
-        axiosClient
-            .get(`/products/${id}`)
-            .then(({ data }) => {
-                setLoading(false);
-                setFormData({
-                    id: data.id,
-                    name: data.name || "",
-                    description: data.description || "",
-                    price: data.price || 0,
-                    quantity: data.quantity || 0,
-                });
-            })
-            .catch((error) => {
-                setLoading(false);
-                console.log(error);
+        try {
+            const response = await axiosClient.get(`/products/${id}`);
+            const data = response.data;
+
+            setFormData({
+                id: data.id,
+                name: data.name || "",
+                description: data.description || "",
+                price: data.price || 0,
+                quantity: data.quantity || 0,
             });
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -45,17 +45,15 @@ export default function EditProductForm() {
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axiosClient
-            .put(`/products/${id}`, formData)
-            .then(() => {
-                console.log("Product updated successfully");
-                navigate("/users");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        try {
+            await axiosClient.put(`/products/${id}`, formData);
+            console.log("Product updated successfully");
+            navigate("/users");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (

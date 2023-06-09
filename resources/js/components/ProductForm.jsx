@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axiosClient from "../axios-client";
-
+import { useHistory } from "react-router-dom";
 
 export default function ProductForm({ onCreate, onUpdate, product = null }) {
     const history = useHistory();
@@ -76,7 +76,10 @@ export default function ProductForm({ onCreate, onUpdate, product = null }) {
                 placeholder="Quantity"
                 className="border border-gray-300 px-4 py-2 rounded"
             />
-            <button type="submit" className="btn bg-blue-500 text-black py-2 px-4 rounded">
+            <button
+                type="submit"
+                className="btn bg-blue-500 text-black py-2 px-4 rounded"
+            >
                 {product ? "Update" : "Create"}
             </button>
         </form>

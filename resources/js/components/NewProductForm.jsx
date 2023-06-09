@@ -23,8 +23,7 @@ export default function NewProductForm() {
             .post("/products", formData)
             .then(({ data }) => {
                 console.log("Product created:", data);
-                // Możesz dodać dodatkową logikę lub powiadomienie o sukcesie tutaj
-                navigate("/users"); // Przekierowanie do ścieżki "/products" po utworzeniu produktu
+                navigate("/users"); // Przekierowanie do ścieżki "/users" po utworzeniu produktu
             })
             .catch((error) => {
                 console.log(error);
@@ -66,7 +65,10 @@ export default function NewProductForm() {
                 placeholder="Quantity"
                 className="border border-gray-300 px-4 py-2 rounded"
             />
-            <button type="submit" className="btn bg-blue-500 text-black py-2 px-4 rounded">
+            <button
+                type="submit"
+                className="btn bg-blue-500 text-black py-2 px-4 rounded"
+            >
                 Create
             </button>
         </form>
