@@ -7,15 +7,19 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ *
+ */
 class AuthController extends Controller
 {
     /**
      * Register a new user.
      *
      * @param RegisterRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function register(RegisterRequest $request)
     {
@@ -35,7 +39,7 @@ class AuthController extends Controller
      * Authenticate a user and generate a token.
      *
      * @param LoginRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function login(LoginRequest $request)
     {
@@ -56,7 +60,7 @@ class AuthController extends Controller
      * Logout the authenticated user.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function logout(Request $request)
     {

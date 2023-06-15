@@ -49,7 +49,7 @@ export default function ProductForm({ onCreate, onUpdate, product = null }) {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Name"
+                placeholder="Nazwa"
                 className="border border-gray-300 px-4 py-2 rounded"
             />
             <input
@@ -57,7 +57,7 @@ export default function ProductForm({ onCreate, onUpdate, product = null }) {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                placeholder="Description"
+                placeholder="Opis"
                 className="border border-gray-300 px-4 py-2 rounded"
             />
             <input
@@ -65,7 +65,7 @@ export default function ProductForm({ onCreate, onUpdate, product = null }) {
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
-                placeholder="Price"
+                placeholder="Cena"
                 className="border border-gray-300 px-4 py-2 rounded"
             />
             <input
@@ -73,7 +73,7 @@ export default function ProductForm({ onCreate, onUpdate, product = null }) {
                 name="quantity"
                 value={formData.quantity}
                 onChange={handleChange}
-                placeholder="Quantity"
+                placeholder="Ilosc"
                 className="border border-gray-300 px-4 py-2 rounded"
             />
             <button

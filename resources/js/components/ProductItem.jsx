@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 import { BsTrash } from "react-icons/bs";
 import { LuEdit } from "react-icons/lu";
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function ProductItem({ product, onDelete }) {
+export default function ProductItem({ product, onDelete ,showAdditionalColumns}) {
     const [orderPlaced, setOrderPlaced] = useState(false);
 
     const handleDelete = () => {
@@ -36,10 +36,32 @@ export default function ProductItem({ product, onDelete }) {
 
     return (
         <tr>
-
+            {showAdditionalColumns && (
+                <>
+                    <td className="border px-4 py-2">{product.id}</td>
+                </>
+            )}
             <td className="border px-4 py-2">{product.name}</td>
             <td className="border px-4 py-2">{product.description}</td>
             <td className="border px-4 py-2">{product.price} PLN</td>
+
+            {showAdditionalColumns && (
+                <>
+                    <td className="border px-4 py-2">{product.quantity}</td>
+                </>
+            )}
+            {showAdditionalColumns && (
+                <>
+                    <td className="border px-4 py-2">{product.created_at}</td>
+                </>
+            )}
+            {showAdditionalColumns && (
+                <>
+                    <td className="border px-4 py-2">{product.updated_at}</td>
+                </>
+            )}
+
+
             <td className="border px-4 py-2">
                 <div className="flex flex-row">
                     <div>

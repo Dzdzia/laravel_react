@@ -6,16 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ *
+ */
 class ProductController extends Controller
 {
     /**
      * Get a list of all products.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
@@ -27,7 +33,7 @@ class ProductController extends Controller
      * Store a new product.
      *
      * @param StoreProductRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(StoreProductRequest $request)
     {
@@ -44,9 +50,9 @@ class ProductController extends Controller
      *
      * @param UpdateProductRequest $request
      * @param Product $product
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function update(UpdateProductRequest $request, Product $product): \Illuminate\Http\JsonResponse
+    public function update(UpdateProductRequest $request, Product $product): JsonResponse
     {
         $product->update($request->validated());
         return response()->json(['data' => $product]);
@@ -56,8 +62,8 @@ class ProductController extends Controller
      * Delete a product.
      *
      * @param Product $product
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(Product $product)
     {

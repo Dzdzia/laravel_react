@@ -7,9 +7,13 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
+/**
+ *
+ */
 class UserController extends Controller
 {
     /**
@@ -71,7 +75,7 @@ class UserController extends Controller
      *
      * @param User $user
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(User $user)
     {

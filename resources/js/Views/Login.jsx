@@ -8,13 +8,33 @@ export default function Login() {
     const passwordRef = createRef();
     const { setUser, setToken } = useStateContext();
     const [message, setMessage] = useState(null);
+    const [emailError, setEmailError] = useState(null);
+    const [passwordError, setPasswordError] = useState(null);
+
+    const validateEmail = email => {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
 
     const onSubmit = (ev) => {
         ev.preventDefault();
 
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        if (!validateEmail(email)) {
+            setEmailError('Niepoprawny adres email.');
+            return;
+        }
+
+        if (!password) {
+            setPasswordError('Hasło nie może być puste.');
+            return;
+        }
+
         const payload = {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
+            email,
+            password,
         };
 
         axiosClient
@@ -55,6 +75,7 @@ export default function Login() {
                         placeholder="Twój adres E-mail"
                         className="input-field"
                     />
+                    {emailError && <p className="error-message">{emailError}</p>}
 
                     <input
                         ref={passwordRef}
@@ -62,6 +83,7 @@ export default function Login() {
                         placeholder="Hasło"
                         className="input-field"
                     />
+                    {passwordError && <p className="error-message">{passwordError}</p>}
 
                     <button className="login-button">
                         Zaloguj się

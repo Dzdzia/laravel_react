@@ -10,7 +10,8 @@ import UserLayout from "./components/UserLayout.jsx";
 import ProductList from "./components/ProductList";
 import NewProductForm from "./components/NewProductForm";
 import EditProductForm from "./components/EditProductForm";
-import OrdersTable from "@/components/OrdersTable.jsx";
+import OrdersTable from "./components/OrdersTable.jsx";
+import EditUserForm from "./components/EditUserForm.jsx";
 
 const router = createBrowserRouter([
     {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/users/:id",
-                element: <UserForm key="userUpdate" />,
+                element: <EditUserForm key="userUpdate" />,
             },
             {
                 path: "/products",
