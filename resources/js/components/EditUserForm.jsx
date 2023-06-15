@@ -6,7 +6,7 @@ function LoadingSpinner() {
     return <p>Loading...</p>;
 }
 
-function ProductForm({ formData, handleChange, handleSubmit }) {
+function UserForm({ formData, handleChange, handleSubmit }) {
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex flex-col">
@@ -18,46 +18,20 @@ function ProductForm({ formData, handleChange, handleSubmit }) {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Nazwa produktu"
+                    placeholder="Imie użytkownika"
                     className="border border-gray-300 px-4 py-2 rounded"
                 />
             </div>
             <div className="flex flex-col">
-                <label htmlFor="description" className="font-bold">
-                    Opis
+                <label htmlFor="email" className="font-bold">
+                    Email
                 </label>
                 <input
-                    type="text"
-                    name="description"
-                    value={formData.description}
+                    type="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
-                    placeholder="Opis produktu"
-                    className="border border-gray-300 px-4 py-2 rounded"
-                />
-            </div>
-            <div className="flex flex-col">
-                <label htmlFor="price" className="font-bold">
-                    Cena
-                </label>
-                <input
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                    placeholder="Cena"
-                    className="border border-gray-300 px-4 py-2 rounded"
-                />
-            </div>
-            <div className="flex flex-col">
-                <label htmlFor="quantity" className="font-bold">
-                    Ilosc
-                </label>
-                <input
-                    type="number"
-                    name="quantity"
-                    value={formData.quantity}
-                    onChange={handleChange}
-                    placeholder="Ilość"
+                    placeholder="Email użytkownika"
                     className="border border-gray-300 px-4 py-2 rounded"
                 />
             </div>
@@ -79,35 +53,31 @@ function ProductForm({ formData, handleChange, handleSubmit }) {
     );
 }
 
-export default function EditProductForm() {
+export default function EditUserForm() {
     const navigate = useNavigate();
     const { id } = useParams();
 
     const [formData, setFormData] = useState({
         id: null,
         name: "",
-        description: "",
-        price: 0,
-        quantity: 0,
+        email: "",
     });
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetchProduct();
+        fetchUser();
     }, [id]);
 
-    const fetchProduct = async () => {
+    const fetchUser = async () => {
         setLoading(true);
         try {
-            const response = await axiosClient.get(`/products/${id}`);
+            const response = await axiosClient.get(`/users/${id}`);
             const data = response.data;
 
             setFormData({
                 id: data.id,
                 name: data.name || "",
-                description: data.description || "",
-                price: data.price || 0,
-                quantity: data.quantity || 0,
+                email: data.email || "",
             });
         } catch (error) {
             console.log(error);
@@ -124,8 +94,8 @@ export default function EditProductForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axiosClient.put(`/products/${id}`, formData);
-            console.log("Product updated successfully");
+            await axiosClient.put(`/users/${id}`, formData);
+            console.log("User updated successfully");
             navigate("/users");
         } catch (error) {
             console.log(error);
@@ -137,7 +107,7 @@ export default function EditProductForm() {
             {loading ? (
                 <LoadingSpinner />
             ) : (
-                <ProductForm
+                <UserForm
                     formData={formData}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}

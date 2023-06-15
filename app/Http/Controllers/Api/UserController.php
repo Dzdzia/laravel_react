@@ -7,9 +7,13 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Exception;
 use Illuminate\Http\Response;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
+/**
+ *
+ */
 class UserController extends Controller
 {
     /**
@@ -19,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::query()->orderBy('id', 'desc')->paginate(10));
+        return UserResource::collection(User::query()->orderBy('id', 'desc')->paginate(5));
     }
 
     /**
@@ -34,7 +38,7 @@ class UserController extends Controller
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
 
-        return response(new UserResource($user) , 201);
+        return response(new UserResource($user), 201);
     }
 
     /**
@@ -71,6 +75,7 @@ class UserController extends Controller
      *
      * @param User $user
      * @return Response
+     * @throws Exception
      */
     public function destroy(User $user)
     {
